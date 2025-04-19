@@ -2,187 +2,198 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Playback - Simple Screen & Webcam Recorder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playback - Video Recording Software</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      font-family: system-ui, sans-serif;
       background: #121212;
       color: #f0f0f0;
-      line-height: 1.6;
     }
+
     header {
-      background: #1f1f1f;
-      padding: 20px 0;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    header h1 {
-      float: left;
-      font-size: 24px;
-    }
-    header h1 img {
-      height: 32px;
-      vertical-align: middle;
-    }
-    nav {
-      float: right;
-    }
-    nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #00bcd4;
-    }
-    .hero {
       text-align: center;
-      padding: 100px 20px;
-      background: #1e1e1e;
+      padding: 4rem 1rem 2rem;
     }
-    .hero h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
     }
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
+
+    p.subtitle {
+      font-size: 1.25rem;
+      color: #aaa;
     }
+
     .button {
       display: inline-block;
-      padding: 12px 25px;
-      background: #00bcd4;
-      color: #121212;
-      border-radius: 8px;
-      font-weight: bold;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: #fff;
+      background: #2563eb;
+      border: none;
+      border-radius: 6px;
       text-decoration: none;
+      transition: background 0.2s ease;
     }
+
     .button:hover {
-      background: #00a0b0;
+      background: #1e40af;
     }
-    section {
-      padding: 80px 20px;
+
+    section.features, section.faq {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
     }
-    h2 {
+
+    .features h2, .faq h2 {
       text-align: center;
-      font-size: 36px;
-      margin-bottom: 40px;
+      margin-bottom: 2rem;
+      font-size: 2rem;
     }
-    ul.features-grid {
+
+    .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      list-style: none;
-      padding: 0;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
-    .features-grid li {
-      background: #292929;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-    .download-section {
+
+    .feature {
       background: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #2c2c2c;
+    }
+
+    .feature h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #ccc;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #ccc;
+    }
+
+    .translate-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #2563eb;
+      color: #fff;
       text-align: center;
+      border-radius: 6px;
+      text-decoration: none;
+      width: fit-content;
     }
-    .big {
-      font-size: 20px;
-      padding: 16px 32px;
+
+    .translate-btn:hover {
+      background: #1e40af;
     }
-    .small {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #aaa;
-    }
+
     footer {
       text-align: center;
-      padding: 30px;
-      font-size: 14px;
-      color: #aaa;
-    }
-    @media (max-width: 600px) {
-      header h1, nav {
-        float: none;
-        text-align: center;
-      }
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
+  <button class="translate-btn" onclick="translatePage('hu')">kattints a magyara forditásra</button>
 
   <header>
-    <div class="container">
-      <h1><img src="https://github.com/spacecat031/playback/raw/2e32b5c732163d25b1bd2469b8952788ad43095e/pixil-frame-0%20(6).png" alt="Playback Logo"></h1>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#download">Download</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div style="clear: both;"></div>
-    </div>
+    <h1 id="title">Playback</h1>
+    <p class="subtitle" id="subtitle">A clean, customizable screen and webcam recorder for creators.</p>
+    <a href="https://example.com/download" class="button" id="downloadBtn">Download for Windows</a>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <h2>Simple Screen & Camera Recording</h2>
-      <p>Free. Open source. No clutter. Just hit record.</p>
-      <a href="#download" class="button">Download Now</a>
+  <section class="features">
+    <h2 id="featuresTitle">Features</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3 id="screenRecordingTitle">Screen & Camera Recording</h3>
+        <p id="screenRecordingDesc">Capture your screen and webcam at the same time with flexible layouts.</p>
+      </div>
+      <div class="feature">
+        <h3 id="resizableLayoutTitle">Resizable Source Layout</h3>
+        <p id="resizableLayoutDesc">Drag, resize, and organize sources to fit your recording setup.</p>
+      </div>
+      <div class="feature">
+        <h3 id="easyToUseTitle">Easy to Use</h3>
+        <p id="easyToUseDesc">Minimal UI focused on fast setup so you can focus on creating.</p>
+      </div>
     </div>
   </section>
 
-  <section id="features">
-    <div class="container">
-      <h2>Features</h2>
-      <ul class="features-grid">
-        <li><strong>Screen + Webcam</strong><br>Capture both with full layout control.</li>
-        <li><strong>Live Layout Editing</strong><br>Resize and drag sources with ease.</li>
-        <li><strong>Cross Platform</strong><br>Works on Windows, macOS, and Linux.</li>
-        <li><strong>Free Forever</strong><br>No watermarks. No payments. Ever.</li>
-      </ul>
+  <section class="faq">
+    <h2 id="faqTitle">FAQ</h2>
+    <div class="faq-item">
+      <h3 id="resizeTitle">How do I resize elements?</h3>
+      <p id="resizeDesc">Put your mouse on the element you want to resize and use the scroll wheel.</p>
     </div>
-  </section>
-
-  <section id="download" class="download-section">
-    <div class="container">
-      <h2>Download Playback</h2>
-      <p>Start recording in seconds.</p>
-      <a href="https://github.com/spacecat031/playback/releases/latest" class="button big">Download for Windows</a>
-      <p class="small">macOS and Linux builds coming soon</p>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="container">
-      <h2>FAQ</h2>
-      <ul class="features-grid">
-        <li><strong>Is Playback open source?</strong><br>Yes! Check the code on GitHub.</li>
-        <li><strong>Does it support audio?</strong><br>Yes, audio from mic can be captured.</li>
-        <li><strong>Where are recordings saved?</strong><br>In the end of a recording you can choose where it's saved.</li>
-        <li><strong>Can I use it for streaming?</strong><br>Not yet!</li>
-        <li><strong>Why can't I move elements?</strong><br>To move elements in Playback you need to hold Ctrl and drag.</li>
-        <li><strong>How the do I resize things?</strong><br>Put your mouse on the element you want to resize and scroll up or down.</li>
-      </ul>
+    <div class="faq-item">
+      <h3 id="moveTitle">How do I move elements?</h3>
+      <p id="moveDesc">Hold Ctrl and drag the element.</p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Playback. Made with Electron.</p>
+    &copy; 2025 Playback. Built with Electron.
   </footer>
 
+  <script>
+    const translations = {
+      hu: {
+        title: 'Playbaxk',
+        subtitle: 'Tiszta, testreszabható képernyő- és webkamera felvevő készítőknek.',
+        downloadBtn: 'Letöltés Windows-ra',
+        featuresTitle: 'Jellemzők',
+        screenRecordingTitle: 'Képernyő- és kamera felvétel',
+        screenRecordingDesc: 'Rögzítse a képernyőt és a webkamerát egyszerre rugalmas elrendezésekkel.',
+        resizableLayoutTitle: 'Átméretezhető forrás elrendezés',
+        resizableLayoutDesc: 'Húzza, méretezze és rendezze a forrást a felvételi beállításához.',
+        easyToUseTitle: 'Könnyen használható',
+        easyToUseDesc: 'Minimalista UI, amely gyors beállítást biztosít, hogy Ön a tartalomkészítésre összpontosíthasson.',
+        faqTitle: 'GYIK',
+        resizeTitle: 'Hogyan méretezhetem az elemeket?',
+        resizeDesc: 'Helyezze az egeret a méretezni kívánt elemre, és használja a görgőt.',
+        moveTitle: 'Hogyan mozgathatok elemeket?',
+        moveDesc: 'Tartsa lenyomva a Ctrl-t, és húzza az elemet.',
+      }
+    };
+
+    function translatePage(lang) {
+      const elements = document.querySelectorAll('[id]');
+      const translation = translations[lang];
+
+      elements.forEach((element) => {
+        const key = element.id;
+        if (translation[key]) {
+          element.textContent = translation[key];
+        }
+      });
+    }
+  </script>
 </body>
 </html>
